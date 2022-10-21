@@ -15,7 +15,7 @@ buttEncrypt.onclick = function() {
 let buttDecrypt = document.getElementById("butt_decrypt");
 buttDecrypt.onclick = function() {
     let text = document.getElementById("text_to_decrypt").value;
-    let key = document.getElementById("key_decrypt").value;
+    let key = document.getElementById("key_decrypt").value == null ? defaultKey : document.getElementById("key_decrypt").value;
     let crypt_text = decryption(text.toUpperCase(), key.toUpperCase());
     alert(crypt_text);
 }
@@ -63,12 +63,4 @@ function vizhenerSquare() {
         square[i] = alphabet.slice(i).concat(alphabet.slice(0, i));
     }
     return square;
-}
-
-function printArr(array) {
-    let s = "";
-    array.forEach(element => {
-        s += element;
-    });
-    return s;
 }
