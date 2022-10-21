@@ -1,10 +1,12 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const alphabetRu = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split("");
 const defaultKey = "DEF"
+const defaultKeyRu = "СТАНДАРТ"
 
 let buttEncrypt = document.getElementById("butt_encrypt");
 buttEncrypt.onclick = function() {
-    let text = document.getElementById("text_to_encrypt").value;
-    let key = document.getElementById("key_encrypt").value == null ? defaultKey : document.getElementById("key_encrypt").value;
+    let text = document.getElementById("text_to_encrypt").value.toUpperCase();
+    let key = document.getElementById("key_encrypt").value == null ? defaultKey : document.getElementById("key_encrypt").value.toUpperCase();
     let crypt_text = encryption(text, key);
     document.getElementById("text_to_decrypt").value = crypt_text;
     alert(crypt_text);
