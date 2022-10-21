@@ -1,13 +1,13 @@
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ., ".split("");
 const alphabetRu = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split("");
 const defaultKey = "DEF"
 const defaultKeyRu = "СТАНДАРТ"
 
 let buttEncrypt = document.getElementById("butt_encrypt");
 buttEncrypt.onclick = function() {
-    let text = document.getElementById("text_to_encrypt").value.toUpperCase();
-    let key = document.getElementById("key_encrypt").value == null ? defaultKey : document.getElementById("key_encrypt").value.toUpperCase();
-    let crypt_text = encryption(text, key);
+    let text = document.getElementById("text_to_encrypt").value;
+    let key = document.getElementById("key_encrypt").value == null ? defaultKey : document.getElementById("key_encrypt").value;
+    let crypt_text = encryption(text.toUpperCase(), key.toUpperCase());
     document.getElementById("text_to_decrypt").value = crypt_text;
     alert(crypt_text);
 }
@@ -16,7 +16,7 @@ let buttDecrypt = document.getElementById("butt_decrypt");
 buttDecrypt.onclick = function() {
     let text = document.getElementById("text_to_decrypt").value;
     let key = document.getElementById("key_decrypt").value;
-    let crypt_text = decryption(text, key);
+    let crypt_text = decryption(text.toUpperCase(), key.toUpperCase());
     alert(crypt_text);
 }
 
