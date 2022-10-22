@@ -2,11 +2,16 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ., ".split("");
 const alphabetRu = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split("");
 const defaultKey = "DEF"
 const defaultKeyRu = "СТАНДАРТ"
+const specSymbols = "!@#$%^&*()[]{}/''"
 
 let buttEncrypt = document.getElementById("butt_encrypt");
 buttEncrypt.onclick = function() {
     let text = document.getElementById("text_to_encrypt").value;
     let key = document.getElementById("key_encrypt").value == null ? defaultKey : document.getElementById("key_encrypt").value;
+    if(!isValidEn(text) || !isValidEn(key)) {
+        alert("Допустимы только буквы латинского алфавита, а также '.', ',', ' '");
+        return;
+    }
     let crypt_text = encryption(text.toUpperCase(), key.toUpperCase());
     document.getElementById("text_to_decrypt").value = crypt_text;
     alert(crypt_text);
@@ -16,6 +21,10 @@ let buttDecrypt = document.getElementById("butt_decrypt");
 buttDecrypt.onclick = function() {
     let text = document.getElementById("text_to_decrypt").value;
     let key = document.getElementById("key_decrypt").value == null ? defaultKey : document.getElementById("key_decrypt").value;
+    if(!isValidEn(text) || !isValidEn(key)) {
+        alert("Допустимы только буквы латинского алфавита, а также '.', ',', ' '");
+        return;
+    }
     let crypt_text = decryption(text.toUpperCase(), key.toUpperCase());
     alert(crypt_text);
 }
@@ -63,4 +72,8 @@ function vizhenerSquare() {
         square[i] = alphabet.slice(i).concat(alphabet.slice(0, i));
     }
     return square;
+}
+
+function isValidEn(text) {
+    return /^[a-zA-Z., ]+$/.test(text)
 }
