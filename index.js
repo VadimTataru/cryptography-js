@@ -31,23 +31,17 @@ buttDecrypt.onclick = function() {
 
 function encrypt(text, key) {
     let result = "";
-    let keyLen = key.length;
-
     for(let i = 0; i < text.length; i++) {
-        result += String.fromCharCode((((text.charCodeAt(i) + key.charCodeAt(i % keyLen)) - 2 * biasEn) % lettersCount) + biasEn);
+        result += String.fromCharCode((((text.charCodeAt(i) + key.charCodeAt(i % key.length)) - 2 * biasEn) % lettersCount) + biasEn);
     }
-
     return result;
 }
 
 function decrypt(text, key) {
     let result = "";
-    let keyLen = key.length;
-
     for(let i = 0; i < text.length; i++) {
-        result += String.fromCharCode((((text.charCodeAt(i) - key.charCodeAt(i % keyLen)) + lettersCount) % lettersCount) + biasEn);
+        result += String.fromCharCode((((text.charCodeAt(i) - key.charCodeAt(i % key.length)) + lettersCount) % lettersCount) + biasEn);
     }
-
     return result;
 }
 
