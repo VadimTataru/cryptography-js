@@ -4,8 +4,6 @@ const defaultKey = "DEF"
 const biasEn = 97;
 const lettersCount = 26;
 
-let testVar = 1;
-
 let buttEncrypt = document.getElementById("butt_encrypt");
 buttEncrypt.onclick = function() {
     let text = document.getElementById("text_to_encrypt").value;
